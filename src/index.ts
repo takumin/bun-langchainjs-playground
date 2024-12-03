@@ -1,4 +1,4 @@
-import { ChatOllama } from "@langchain/community/chat_models/ollama";
+import { ChatOllama } from "@langchain/ollama";
 
 const chatModel = new ChatOllama({
 	baseUrl: "http://localhost:11434",

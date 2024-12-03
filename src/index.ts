@@ -14,8 +14,11 @@ const promptTemplate = ChatPromptTemplate.fromMessages([
 	["user", "{text}"],
 ]);
 
-const parser = new StringOutputParser();
-const chain = promptTemplate.pipe(model).pipe(parser);
-const result = await chain.invoke({ language: "japanese", text: "hi!" });
+async function main() {
+	const parser = new StringOutputParser();
+	const chain = promptTemplate.pipe(model).pipe(parser);
+	const result = await chain.invoke({ language: "japanese", text: "hi!" });
+	console.log(result);
+}
 
-console.log(result);
+main();

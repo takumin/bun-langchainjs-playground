@@ -9,6 +9,14 @@ pre-commit:
       glob: "*.{yml,yaml}"
       run: yamlfmt -gitignore_excludes -no_global_conf {staged_files}
       stage_fixed: true
+    taplo-format:
+      glob: "*.{toml}"
+      run: taplo format --no-auto-config --config taplo.toml {staged_files}
+      stage_fixed: true
+    taplo-lint:
+      glob: "*.{toml}"
+      run: taplo lint --no-auto-config --config taplo.toml {staged_files}
+      stage_fixed: true
 pre-push:
   commands:
     biome:
@@ -17,3 +25,9 @@ pre-push:
     yamlfmt:
       glob: "*.{yml,yaml}"
       run: yamlfmt -lint -gitignore_excludes -no_global_conf {push_files}
+    taplo-format:
+      glob: "*.{toml}"
+      run: taplo format --check --no-auto-config --config taplo.toml {staged_files}
+    taplo-lint:
+      glob: "*.{toml}"
+      run: taplo lint --no-auto-config --config taplo.toml {staged_files}

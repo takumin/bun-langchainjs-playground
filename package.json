@@ -2,6 +2,9 @@
 	"name": "bun-langchainjs-playground",
 	"module": "src/index.ts",
 	"type": "module",
+	"scripts": {
+		"install": "lefthook install"
+	},
 	"devDependencies": {
 		"@types/bun": "^1.1.14"
 	},

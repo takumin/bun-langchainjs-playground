@@ -7,7 +7,7 @@ pre-commit:
       stage_fixed: true
     yamlfmt:
       glob: "*.{yml,yaml}"
-      run: yamlfmt -gitignore_excludes -no_global_conf -conf yamlfmt.yml {staged_files}
+      run: yamlfmt -no_global_conf -conf yamlfmt.yml {staged_files}
       stage_fixed: true
     taplo-format:
       glob: "*.{toml}"
@@ -24,7 +24,7 @@ pre-push:
       run: biome check --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {push_files}
     yamlfmt:
       glob: "*.{yml,yaml}"
-      run: yamlfmt -lint -gitignore_excludes -no_global_conf -conf yamlfmt.yml {push_files}
+      run: yamlfmt -lint -no_global_conf -conf yamlfmt.yml {push_files}
     taplo-format:
       glob: "*.{toml}"
       run: taplo format --check --no-auto-config --config taplo.toml {staged_files}

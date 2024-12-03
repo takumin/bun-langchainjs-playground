@@ -5,8 +5,15 @@ pre-commit:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
       stage_fixed: true
+    yamlfmt:
+      glob: "*.{yml,yaml}"
+      run: yamlfmt -gitignore_excludes -no_global_conf {staged_files}
+      stage_fixed: true
 pre-push:
   commands:
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: biome check --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {push_files}
+    yamlfmt:
+      glob: "*.{yml,yaml}"
+      run: yamlfmt -lint -gitignore_excludes -no_global_conf {push_files}

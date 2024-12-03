@@ -1,7 +1,5 @@
 ---
 gitignore_excludes: true
-exclude:
-- 'node_modules/'
 formatter:
   type: basic
   line_ending: lf
